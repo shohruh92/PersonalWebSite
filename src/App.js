@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+/*-----pages-----*/
+import { Home6 } from "./Home6";
+import { NotFound } from "./404";
+import BookSearchEngine from "./component/Portfolio/BookSearchEngine";
+import Todolist from "./component/Portfolio/Todolist";
+import './firebase';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home6} />
+            <Route exact path="/book" component={BookSearchEngine} />
+            <Route exact path="/todo" component={Todolist} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
